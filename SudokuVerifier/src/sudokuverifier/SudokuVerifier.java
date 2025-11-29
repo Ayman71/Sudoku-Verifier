@@ -14,7 +14,7 @@ public class SudokuVerifier {
     public static void main(String[] args) {
 
         if (args.length != 2) {
-            System.out.println("Usage: java -jar sudoku-verifier.jar <file.csv> <mode>");
+            System.out.println("Usage: java -jar SudokuVerifier.jar <file.csv> <mode>");
             return;
         }
 

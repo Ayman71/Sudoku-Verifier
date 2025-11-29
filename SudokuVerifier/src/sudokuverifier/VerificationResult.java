@@ -15,7 +15,7 @@ public class VerificationResult {
 
     private List<DuplicateReport> duplicates = new ArrayList<>();
 
-    public synchronized void addDuplicate(DuplicateReport report) {
+    public void addDuplicate(DuplicateReport report) {
         duplicates.add(report);
     }
 

@@ -8,6 +8,14 @@ package sudokuverifier;
  *
  * @author Ayman
  */
-public class Worker {
-    
+public abstract class Worker implements Runnable {
+    protected int index;
+    protected int[][] board;
+    protected VerificationResult result;
+
+    public Worker(int index, int[][] board, VerificationResult result) {
+        this.index = index;
+        this.board = board;
+        this.result = result;
+    }
 }

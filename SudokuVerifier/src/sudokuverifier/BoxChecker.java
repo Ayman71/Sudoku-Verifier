@@ -4,6 +4,9 @@
  */
 package sudokuverifier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Ayman
@@ -16,8 +19,6 @@ public class BoxChecker extends Worker {
 
     @Override
     public void run() {
-
-        boolean[] seen = new boolean[10];
         List<Integer>[] positions = new List[10];
 
         for (int i = 0; i < 10; i++)
@@ -25,23 +26,24 @@ public class BoxChecker extends Worker {
 
         int rowStart = (index / 3) * 3;
         int colStart = (index % 3) * 3;
-        int pos = 1;
+        int pos = 1; // 1-based index in box 1-9
 
+        // collect positions in the box
         for (int r = rowStart; r < rowStart + 3; r++) {
             for (int c = colStart; c < colStart + 3; c++) {
-
                 int value = board[r][c];
                 positions[value].add(pos);
-
-                if (positions[value].size() > 1) {
-                    int[] posArray = positions[value].stream().mapToInt(Integer::intValue).toArray();
-                    result.addDuplicate(
-                        new DuplicateReport("BOX", index + 1, value, posArray)
-                    );
-                    return;
-                }
-
                 pos++;
+            }
+        }
+
+        // report duplicates once per value
+        for (int value = 1; value <= 9; value++) {
+            if (positions[value].size() > 1) {
+                int[] posArray = positions[value].stream().mapToInt(Integer::intValue).toArray();
+                result.addDuplicate(
+                    new DuplicateReport("BOX", index + 1, value, posArray)
+                );
             }
         }
     }
