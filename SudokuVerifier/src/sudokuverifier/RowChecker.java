@@ -25,13 +25,11 @@ public class RowChecker extends Worker {
         for (int i = 0; i < 10; i++)
             positions[i] = new ArrayList<>();
 
-        // scan row and collect positions
         for (int col = 0; col < 9; col++) {
             int value = row[col];
-            positions[value].add(col + 1); // 1-based index
+            positions[value].add(col + 1);
         }
 
-        // after scanning, report duplicates
         for (int value = 1; value <= 9; value++) {
             if (positions[value].size() > 1) {
                 int[] posArray = positions[value].stream().mapToInt(Integer::intValue).toArray();

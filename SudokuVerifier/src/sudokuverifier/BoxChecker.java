@@ -26,9 +26,8 @@ public class BoxChecker extends Worker {
 
         int rowStart = (index / 3) * 3;
         int colStart = (index % 3) * 3;
-        int pos = 1; // 1-based index in box 1-9
+        int pos = 1; 
 
-        // collect positions in the box
         for (int r = rowStart; r < rowStart + 3; r++) {
             for (int c = colStart; c < colStart + 3; c++) {
                 int value = board[r][c];
@@ -37,7 +36,6 @@ public class BoxChecker extends Worker {
             }
         }
 
-        // report duplicates once per value
         for (int value = 1; value <= 9; value++) {
             if (positions[value].size() > 1) {
                 int[] posArray = positions[value].stream().mapToInt(Integer::intValue).toArray();

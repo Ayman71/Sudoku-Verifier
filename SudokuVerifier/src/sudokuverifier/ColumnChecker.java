@@ -24,13 +24,11 @@ public class ColumnChecker extends Worker {
         for (int i = 0; i < 10; i++)
             positions[i] = new ArrayList<>();
 
-        // collect positions of each value in the column
         for (int row = 0; row < 9; row++) {
             int value = board[row][index];
-            positions[value].add(row + 1); // 1-based index
+            positions[value].add(row + 1);
         }
 
-        // after scanning, report duplicates
         for (int value = 1; value <= 9; value++) {
             if (positions[value].size() > 1) {
                 int[] posArray = positions[value].stream().mapToInt(Integer::intValue).toArray();
