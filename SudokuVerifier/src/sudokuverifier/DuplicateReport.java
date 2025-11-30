@@ -12,10 +12,10 @@ import java.util.Arrays;
  */
 public class DuplicateReport {
 
-    private String regionType;   // ROW, COL, BOX
-    private int regionIndex;     // 1–9
-    private int duplicateValue;  // duplicated number
-    private int[] duplicatePositions; // positions where this duplicate occurs
+    private String regionType;
+    private int regionIndex;
+    private int duplicateValue;
+    private int[] duplicatePositions;
 
     public DuplicateReport(String regionType, int regionIndex, int duplicateValue, int[] duplicatePositions) {
         this.regionType = regionType;
