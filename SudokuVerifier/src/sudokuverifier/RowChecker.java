@@ -22,8 +22,9 @@ public class RowChecker extends Worker {
         int[] row = board[index];
         List<Integer>[] positions = new List[10];
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) {
             positions[i] = new ArrayList<>();
+        }
 
         for (int col = 0; col < 9; col++) {
             int value = row[col];
@@ -32,9 +33,15 @@ public class RowChecker extends Worker {
 
         for (int value = 1; value <= 9; value++) {
             if (positions[value].size() > 1) {
-                int[] posArray = positions[value].stream().mapToInt(Integer::intValue).toArray();
+
+                List<Integer> list = positions[value];
+                int[] posArray = new int[list.size()];
+
+                for (int i = 0; i < list.size(); i++) {
+                    posArray[i] = list.get(i); 
+                }
                 result.addDuplicate(
-                    new DuplicateReport("ROW", index + 1, value, posArray)
+                        new DuplicateReport("ROW", index + 1, value, posArray)
                 );
             }
         }
